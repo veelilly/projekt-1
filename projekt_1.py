@@ -49,7 +49,7 @@ if (username := input("Please insert your username: ")) and \
 
         print(oddelovac)
 
-        print(f"Welcome to the app, {username} \n We have 3 texts to be analyzed.")
+        print(f"Welcome to the app, {username} \nWe have 3 texts to be analyzed.")
     
         print(oddelovac)
 
@@ -107,7 +107,7 @@ if (username := input("Please insert your username: ")) and \
             print(f"There are {uppercase} uppercase words.")
             print(f"There are {lowercase} lowercase words.")
             print(f"There are {numeric} numeric strings.")
-            print(f"The sum of all the numbers {sum_numbers}")
+            print(f"The sum of all the numbers {sum_numbers}.")
 
             # počet znaků v jednotlivých slovech
             delka_slov = {}
