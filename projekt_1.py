@@ -85,6 +85,9 @@ if (username := input("Please insert your username: ")) and \
 
             # analýza znaků
             for slovo in slova:
+                # vyčistíme každé slovo od čárek a teček
+                clean = slovo.strip(".,")
+                words += 1
                 if slovo.istitle():
                     titlecase += 1
                 if slovo.isupper():
@@ -93,7 +96,6 @@ if (username := input("Please insert your username: ")) and \
                     lowercase += 1
                 if slovo.isnumeric():
                     numeric += 1
-                    words = len(slova)
                 if slovo.isdigit():
                     sum_numbers += int(slovo)
 
@@ -108,13 +110,23 @@ if (username := input("Please insert your username: ")) and \
             print(f"The sum of all the numbers {sum_numbers}")
 
             # počet znaků v jednotlivých slovech
+            delka_slov = {}
+            for slovo in slova:
+                delka = len(slovo)
+                if delka in delka_slov:
+                    delka_slov[delka] += 1
+                else:
+                    delka_slov[delka] = 1
+
             print(oddelovac)
             print("LEN|\tOCCURENCES\t|NR.")
             print(oddelovac)
 
             # sloupcový graf
-            for i, slovo in enumerate(slova):
-                print(f"{i+1}|{'*' * len(slovo)}\t|{len(slovo)}")   # opravit, zarovnání je špatně
+            for i, pocet in enumerate(delka_slov):
+                if pocet > 0:
+                    stars = "*" * pocet
+                    print(f"{i+1:<3}| {stars:<13}\t|{pocet}")   
 
     # Pokud jmeno a heslo nesedí:
     else:
