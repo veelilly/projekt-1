@@ -1,0 +1,52 @@
+diff --git a/projekt_1.py b/projekt_1.py
+--- projekt_1.py
++++ projekt_1.py
+@@ -84,17 +84,19 @@
+             slova = vybrany_text.split()
+ 
+             # analýza znaků
+             for slovo in slova:
++                # vyčistíme každé slovo od čárek a teček
++                clean = slovo.strip(".,")
++                words += 1
+                 if slovo.istitle():
+                     titlecase += 1
+                 if slovo.isupper():
+                     uppercase += 1
+                 if slovo.islower():
+                     lowercase += 1
+                 if slovo.isnumeric():
+                     numeric += 1
+-                    words = len(slova)
+                 if slovo.isdigit():
+                     sum_numbers += int(slovo)
+ 
+             print(oddelovac)
+@@ -107,15 +109,25 @@
+             print(f"There are {numeric} numeric strings.")
+             print(f"The sum of all the numbers {sum_numbers}")
+ 
+             # počet znaků v jednotlivých slovech
++            delka_slov = {}
++            for slovo in slova:
++                delka = len(slovo)
++                if delka in delka_slov:
++                    delka_slov[delka] += 1
++                else:
++                    delka_slov[delka] = 1
++
+             print(oddelovac)
+             print("LEN|\tOCCURENCES\t|NR.")
+             print(oddelovac)
+ 
+             # sloupcový graf
+-            for i, slovo in enumerate(slova):
+-                print(f"{i+1}|{'*' * len(slovo)}\t|{len(slovo)}")   # opravit, zarovnání je špatně
++            for i, pocet in enumerate(delka_slov):
++                if pocet > 0:
++                    stars = "*" * pocet
++                    print(f"{i+1:<3}| {stars:<13}\t|{pocet}")   
+ 
+     # Pokud jmeno a heslo nesedí:
+     else:
+         print(f"username: {username}\npassword: {password}\nuregistered user, terminating the program..")       
