@@ -71,8 +71,9 @@ if username in uzivatel_heslo and uzivatel_heslo[username] == password:
             # vyčistíme každé slovo od čárek a teček
             clean = slovo.strip(",.")
             words += 1
-            if clean.istitle():
+            if clean.istitle() and clean.isalpha():
                 titlecase += 1
+                print(titlecase)
             if clean.islower():
                 lowercase += 1
             if clean.isupper() and clean.isalpha():
@@ -85,7 +86,7 @@ if username in uzivatel_heslo and uzivatel_heslo[username] == password:
             if delka in delka_slov:
                 delka_slov[delka] += 1
             else:
-                delka_slov[delka] = 1
+                delka_slov[delka] = 1 
 
         # výpis výsledků
         print(oddelovac)
