@@ -73,7 +73,6 @@ if username in uzivatel_heslo and uzivatel_heslo[username] == password:
             words += 1
             if clean.istitle() and clean.isalpha():
                 titlecase += 1
-                print(titlecase)
             if clean.islower():
                 lowercase += 1
             if clean.isupper() and clean.isalpha():
